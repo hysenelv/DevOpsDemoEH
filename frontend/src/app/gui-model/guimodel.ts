@@ -87,8 +87,52 @@ export class GuiModel {
                         }
                     ]
                 },
+                {
+                    "id": "ModuleForm",
+                    "title": { default: "Module"},
+                    "formFieldList": [
+                        {
+                            "id": "Name",
+                            "type": "text",
+                            "name": {default: "name"},
+                            "required": true
+                        },
+                        {
+                            "id": "Beschreibung",
+                            "type": "text",
+                            "name": {default: "Beschreibung"},
+                            "required": true
+                        },
+                        {
+                            "id": "cancelButton",
+                            "name": {default: "Abbrechen"},
+                        },
+                        {
+                            "id": "okButton",
+                            "name": {default: "OK"},
+                        },
+                    ]
+                },
             ],
             "pageList": [
+                {
+                    "id": "modulePage",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": { default: "Neues Modul"},
+                            "icon": "fa-user",
+                            "color": "green",
+                            "width": 2,
+                            "form" : {
+                                "form" : "ModuleForm"
+                            }
+                        },
+                    ]
+                },
                 {
                     "id": "mainmenu",
                     "name": "MainMenu",
@@ -106,6 +150,14 @@ export class GuiModel {
                             "page": "toDoPage",
                             "width": 2,
                             "newRow": true,
+                        },
+                        {
+                            "type": "button",
+                            "name": { default: "Module" },
+                            "icon": "fa-file-alt",
+                            "color": "wet-asphalt",
+                            "page": "modulePage",
+                            "width": 2,
                         },
                     ]
                 },
