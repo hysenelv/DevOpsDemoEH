@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin
+@CrossOrigin ("http://localhost:8080")
 @RestController
 public class ToDoController {
 
-    private Map<Integer, ToDo> todos = new HashMap<Integer, ToDo>();
+    private Map<Integer, ToDo> todos = new HashMap<>();
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
