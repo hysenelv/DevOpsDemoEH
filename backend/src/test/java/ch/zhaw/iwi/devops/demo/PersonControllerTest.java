@@ -5,6 +5,10 @@ import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import ch.zhaw.iwi.devops.demo.Person;
+import ch.zhaw.iwi.devops.demo.PersonController;
+import ch.zhaw.iwi.devops.demo.ToDoController;
+
 public final class PersonControllerTest {
 
     @Test
@@ -68,6 +72,14 @@ public final class PersonControllerTest {
         ToDo toDoFromController = toDoController.getTodo(6);
         Assertions.assertEquals(todo.getDescription(), toDoFromController.getDescription());
 
+    }
+
+    @Test
+    public void testPing() {
+        ToDoController toDoController = new ToDoController();
+        String response = toDoController.ping();
+        String expectedResponse = "{ \"status\": \"ok\", \"userId\": \"admin\", \"languageCode\": \"de\",\"version\": \"0.0.1\"}";
+        Assertions.assertEquals(expectedResponse, response);
     }
 
 }

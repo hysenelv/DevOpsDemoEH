@@ -24,9 +24,26 @@ public class ToDoControllerTest {
         String message = controller.test();
         String exceptedmessage = "ToDo app is up and running!";
         Assertions.assertEquals(exceptedmessage, message);
+    }
 
+    @Test
+    void testPing() {
+        ToDoController controller = new ToDoController();
+        String response = controller.ping();
+        String expectedResponse = "{ \"status\": \"ok\", \"userId\": \"admin\", \"languageCode\": \"de\",\"version\": \"0.0.1\"}";
+        Assertions.assertEquals(expectedResponse, response);
+    }
 
-
+    @Test
+    void testDeleteTodo() {
+        ToDoController controller = new ToDoController();
+        controller.init();
+        int initialCount = controller.count();
+        
+        ToDo deletedTodo = controller.deleteTodo(1);
+        assertEquals(initialCount - 1, controller.count());
+        assertEquals("Neuer Job", deletedTodo.getTitle());
+        assertEquals("5 DevOps Engineers einstellen", deletedTodo.getDescription());
     }
 
 }
